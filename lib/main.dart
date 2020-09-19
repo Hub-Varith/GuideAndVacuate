@@ -7,8 +7,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/services.dart';
 import 'Screens/HomeScreen.dart';
 import 'package:provider/provider.dart';
-import 'Screens/HomeScreen.dart';
-import 'Screens/HomeScreen.dart';
 import 'Services/UserAuthProvider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';

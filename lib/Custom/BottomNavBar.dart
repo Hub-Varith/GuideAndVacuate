@@ -4,7 +4,12 @@ import '../constants.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class BottomNavBar extends StatelessWidget {
+class BottomNavBar extends StatefulWidget {
+  @override
+  _BottomNavBarState createState() => _BottomNavBarState();
+}
+
+class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     var _userAuth = Provider.of<UserAuthProvider>(context);
@@ -32,7 +37,10 @@ class BottomNavBar extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              onTap: () => _userAuth.signOut(),
+              onTap: () {
+                Navigator.popUntil(context, ModalRoute.withName("/"));
+                _userAuth.signOut();
+              },
               child: Icon(
                 Icons.person_outline,
                 size: 60,
