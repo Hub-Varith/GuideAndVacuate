@@ -14,7 +14,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +36,11 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               Column(
                 children: [
-                  BuildingsListView(numOfPeople: "20", address: "438 5th Ave, NYC", smartCameraAmount: "40",)
+                  BuildingsListView(
+                    numOfPeople: "20",
+                    address: "438 5th Ave, NYC",
+                    smartCameraAmount: "40",
+                  )
                 ],
               ),
             ],
