@@ -27,10 +27,13 @@ class BottomNavBar extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            Icon(
-              Icons.person_outline,
-              size: 60,
-              color: Colors.white,
+            GestureDetector(
+              onTap: () => Navigator.of(context).pushNamed("/signup_screen"),
+              child: Icon(
+                Icons.person_outline,
+                size: 60,
+                color: Colors.white,
+              ),
             )
           ],
         ),
