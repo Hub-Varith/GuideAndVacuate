@@ -1,3 +1,4 @@
+import 'package:Vacuate/Custom/BottomNavBar.dart';
 import 'package:flutter/material.dart';
 import '../Custom/camera_card.dart';
 import '../Custom/page_title.dart';
@@ -65,6 +66,18 @@ class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
           ),
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Container(
+        height: 75,
+        width: 75,
+        child: RawMaterialButton(
+          shape: CircleBorder(),
+          fillColor: pinkishColor,
+          child: Icon(Icons.directions_run, color: Colors.black, size: 50),
+          onPressed: () {},
+        ),
+      ),
+      bottomNavigationBar: BottomNavBar(),
     );
   }
 }
