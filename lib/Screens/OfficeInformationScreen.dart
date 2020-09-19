@@ -84,6 +84,7 @@ class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
                 ),
               ), 
               ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.08,)
               
             ],
           ),
