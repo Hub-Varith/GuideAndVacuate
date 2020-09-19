@@ -69,8 +69,16 @@ const TextStyle redTextStyle = TextStyle(
   fontWeight: FontWeight.w600,
 );
 
+
+const TextStyle pinkAnnouncement = TextStyle(
+  color: pinkishColor,
+  fontSize: 22,
+  fontWeight: FontWeight.bold,
+);
+
 const TextStyle normalTextStyle = TextStyle(
   color: Colors.white,
   fontSize: 15,
   fontWeight: FontWeight.normal,
 );
+
