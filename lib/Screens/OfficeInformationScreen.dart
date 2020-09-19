@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import '../Custom/camera_card.dart';
 import '../Custom/page_title.dart';
 import '../constants.dart';
-import '../constants.dart';
 
 class OfficeInformationScreen extends StatefulWidget {
   OfficeInformationScreen({Key key}) : super(key: key);
