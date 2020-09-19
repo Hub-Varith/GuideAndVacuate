@@ -1,22 +1,15 @@
+import 'package:Vacuate/positional_tracking/room.dart';
+import 'package:Vacuate/positional_tracking/sensor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class RoomVisualPainter extends CustomPainter {
-  RoomVisualPainter({this.sensors, this.device});
+  RoomVisualPainter({this.sensors, this.device, this.room});
 
-  var doorWays = [
-    [75.0, 300.0, 25.0, 1.0],
-    [175.0, 0.0, 25.0, 1.0]
-  ];
-
-  var intermediateDoors = [
-    [50.0, 150.0, 25.0, 1.0],
-    [200.0, 150.0, 25.0, 1.0],
-    [150.0, 50.0, 1.0, 25.0],
-    [150.0, 200.0, 1.0, 25.0],
-  ];
-  var sensors;
+  
+  List<Sensor> sensors;
   var device;
+  Room room;
   @override
   void paint(Canvas canvas, Size size){
     var paint = Paint()
@@ -44,7 +37,7 @@ class RoomVisualPainter extends CustomPainter {
     
     // Doorways
     paint ..color = Colors.green;
-    for(var doorway in doorWays){
+    for(var doorway in room.doorWays){
       canvas.drawRect(
         Rect.fromLTWH(doorway[0], doorway[1], doorway[2], doorway[3]),
         paint
@@ -52,7 +45,7 @@ class RoomVisualPainter extends CustomPainter {
     }
 
     paint ..color = Colors.white;
-    for(var intDoor in intermediateDoors){
+    for(var intDoor in room.intermediateDoors){
       canvas.drawRect(
         Rect.fromLTWH(intDoor[0], intDoor[1], intDoor[2], intDoor[3]),
         paint
