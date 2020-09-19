@@ -34,41 +34,32 @@ const TextStyle cardTextStyle = TextStyle(
   fontSize: 18,
 );
 
-
 const TextStyle standardWhiteTitle = TextStyle(
-  fontFamily: "Kanit", 
-  color: Colors.white,
-  fontWeight: FontWeight.w600,
-  fontSize: 18
-);
+    fontFamily: "Kanit",
+    color: Colors.white,
+    fontWeight: FontWeight.w600,
+    fontSize: 18);
 
 const TextStyle standardWhiteDetail = TextStyle(
-  fontFamily: "Kanit", 
-  color: Colors.white,
-  fontWeight: FontWeight.w600,
-  fontSize: 16
-);
+    fontFamily: "Kanit",
+    color: Colors.white,
+    fontWeight: FontWeight.w600,
+    fontSize: 16);
 
 const TextStyle standardPurpleDetail = TextStyle(
-  fontFamily: "Kanit", 
-  color: titleColor,
-  fontWeight: FontWeight.w600,
-  fontSize: 16
-);
+    fontFamily: "Kanit",
+    color: titleColor,
+    fontWeight: FontWeight.w600,
+    fontSize: 16);
 
-const TextStyle smallGreen = TextStyle(
-  fontFamily: "Kanit", 
-  color: neonGreen,
-  
-  fontSize: 12
-);
+const TextStyle smallGreen =
+    TextStyle(fontFamily: "Kanit", color: neonGreen, fontSize: 12);
 
 const TextStyle redTextStyle = TextStyle(
   color: pinkishColor,
   fontSize: 20,
   fontWeight: FontWeight.w600,
 );
-
 
 const TextStyle pinkAnnouncement = TextStyle(
   color: pinkishColor,
@@ -81,4 +72,11 @@ const TextStyle normalTextStyle = TextStyle(
   fontSize: 15,
   fontWeight: FontWeight.normal,
 );
+
+const TextStyle credentialsTitleText = TextStyle(
+  color: Colors.white,
+  fontSize: 30,
+  fontWeight: FontWeight.w500
+);
+
 
