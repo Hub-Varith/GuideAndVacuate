@@ -1,3 +1,4 @@
+import 'package:Vacuate/Screens/AddRoutesScreen.dart';
 import 'package:Vacuate/Screens/OfficeInformationScreen.dart';
 import 'package:Vacuate/Screens/SignupScreen.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
       routes: {
         // '/': (context) => HomeScreen(),
         '/office_info': (context) => OfficeInformationScreen(),
+        "/add_routes": (context) => AddRoutesScreen(),
         //Temporary 
         '/signup_screen': (context) => SignupScreen(),
       }
