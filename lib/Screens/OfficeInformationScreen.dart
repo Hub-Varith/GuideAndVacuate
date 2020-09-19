@@ -1,4 +1,8 @@
+
 import 'package:Vacuate/Custom/BottomNavBar.dart';
+import 'package:Vacuate/positional_tracking/device.dart';
+import 'package:Vacuate/positional_tracking/sensor_handler.dart';
+import 'package:Vacuate/visual/room_visual.dart';
 import 'package:flutter/material.dart';
 import '../Custom/camera_card.dart';
 import '../Custom/page_title.dart';
@@ -13,15 +17,26 @@ class OfficeInformationScreen extends StatefulWidget {
 }
 
 class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
+  Device device;
+  SensorHandler sensorHandler;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    this.device = Device();
+    this.sensorHandler = SensorHandler(this.device);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgColor,
-      body: SafeArea(
+      body: (this.device != null && this.sensorHandler != null) ?SafeArea(
         child: Container(
           width: double.infinity,
           height: MediaQuery.of(context).size.height,
           child: ListView(
+            
             children: <Widget>[
               PageTitle(
                 title: "Vacuate",
@@ -31,7 +46,15 @@ class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
                 alignment: Alignment.topLeft,
                 child: Text("Office", style: subTextStyle),
               ),
-              Text("Insert Google Map Location here "), // TODO: GMAPS location here
+              
+              
+              Container(
+                  width: 300,
+                  height: 300,
+                  margin: EdgeInsets.fromLTRB(50, 0, 0, 0),
+                  child: CustomPaint(painter: RoomVisualPainter(sensors: this.sensorHandler.sensors, device: this.sensorHandler.approximateDevice())),
+              ),
+              
               SizedBox(height: MediaQuery.of(context).size.height * 0.04),
 
               // Camera Sensor Values List
@@ -61,11 +84,12 @@ class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
                 ),
               ), 
               ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.08,)
               
             ],
           ),
         ),
-      ),
+      ) : Text("Loading..."),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Container(
         height: 75,

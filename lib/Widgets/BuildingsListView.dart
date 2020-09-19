@@ -81,11 +81,11 @@ class _BuildingsListViewState extends State<BuildingsListView> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
+                  padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
                   alignment: Alignment.center,
                   child: Image.asset(
                     "assets/images/map.png",
-                    scale: 3.5,
+                    scale: 4.7,
                   ),
                 ),
               ],
