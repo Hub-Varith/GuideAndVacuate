@@ -1,3 +1,4 @@
+import 'package:Vacuate/Screens/OfficeInformationScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/services.dart';
@@ -27,6 +28,11 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomeScreen(),
+      initialRoute: '/',
+      routes: {
+        // '/': (context) => HomeScreen(),
+        '/office_info': (context) => OfficeInformationScreen(),
+      }
     );
   }
 }
