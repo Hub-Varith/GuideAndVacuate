@@ -206,7 +206,9 @@ class _LoginFormState extends State<LoginForm> {
                     ),
                     GestureDetector(
                       child: Text("Sign Up", style: fineBlueText),
-                      onTap: this.navToSignup,
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/');
+                      },
                     )
                   ],
                 ),
