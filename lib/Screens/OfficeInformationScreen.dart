@@ -23,7 +23,6 @@ class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
   Room room;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     this.device = Device();
     this.sensorHandler = SensorHandler(this.device);
