@@ -4,6 +4,7 @@ import 'package:Vacuate/constants.dart';
 import 'package:Vacuate/Custom/page_title.dart';
 import 'package:Vacuate/Widgets/BuildingsListView.dart';
 import '../constants.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -11,6 +12,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   Firebase.initializeApp().whenComplete(
+  //     () {
+  //       print("completed");
+  //       setState(() {});
+  //     },
+  //   );
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
