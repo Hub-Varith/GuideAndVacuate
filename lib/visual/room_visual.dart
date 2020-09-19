@@ -23,8 +23,10 @@ class RoomVisualPainter extends CustomPainter {
       canvas.drawCircle(Offset(sensors[i][0], sensors[i][1]), 2, paint);
     }
 
-    paint ..color = Colors.red;
-    canvas.drawCircle(Offset(device.x, device.y), 5, paint);
+    
+
+    paint ..color = Colors.blue;
+    canvas.drawCircle(Offset(device[0], device[1]), 5, paint);
     
   }
 
