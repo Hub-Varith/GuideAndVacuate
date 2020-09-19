@@ -1,6 +1,12 @@
+import 'package:Vacuate/Custom/highlightedText.dart';
 import 'package:flutter/material.dart';
 import 'package:Vacuate/constants.dart';
 import 'package:Vacuate/Custom/page_title.dart';
+import 'package:Vacuate/Widgets/BuildingsListView.dart';
+
+import '../Custom/custom_card.dart';
+import '../constants.dart';
+import '../constants.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -28,7 +34,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text("Buildings", style: subTextStyle),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-              
+              Column(
+                children: [
+                  BuildingsListView(
+                    numOfPeople: "20",
+                    address: "438 5th Ave, NYC",
+                    smartCameraAmount: "40",
+                  )
+                ],
+              ),
             ],
           ),
         ),
