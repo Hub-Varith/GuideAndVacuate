@@ -1,4 +1,7 @@
 import 'package:Vacuate/Custom/BottomNavBar.dart';
+import 'package:Vacuate/positional_tracking/device.dart';
+import 'package:Vacuate/positional_tracking/sensor_handler.dart';
+import 'package:Vacuate/visual/room_visual.dart';
 import 'package:flutter/material.dart';
 import '../Custom/camera_card.dart';
 import '../Custom/page_title.dart';
@@ -22,6 +25,7 @@ class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
           width: double.infinity,
           height: MediaQuery.of(context).size.height,
           child: ListView(
+            
             children: <Widget>[
               PageTitle(
                 title: "Vacuate",
@@ -31,7 +35,15 @@ class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
                 alignment: Alignment.topLeft,
                 child: Text("Office", style: subTextStyle),
               ),
-              Text("Insert Google Map Location here "), // TODO: GMAPS location here
+              
+              
+              Container(
+                  width: 300,
+                  height: 300,
+                  margin: EdgeInsets.fromLTRB(50, 0, 0, 0),
+                  child: CustomPaint(painter: RoomVisualPainter(sensors: SensorHandler().sensors, device: Device())),
+              ),
+              
               SizedBox(height: MediaQuery.of(context).size.height * 0.04),
 
               // Camera Sensor Values List
