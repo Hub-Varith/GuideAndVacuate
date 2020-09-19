@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../constants.dart';
 import '../constants.dart';
 
 class BottomNavBar extends StatelessWidget {
@@ -21,8 +19,19 @@ class BottomNavBar extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Icon(Icons.home, size: 60, color: Colors.white),
-            Icon(Icons.person_outline, size: 60, color: Colors.white)
+            GestureDetector(
+              onTap: () => Navigator.of(context).pushNamed("/"),
+              child: Icon(
+                Icons.home,
+                size: 60,
+                color: Colors.white,
+              ),
+            ),
+            Icon(
+              Icons.person_outline,
+              size: 60,
+              color: Colors.white,
+            )
           ],
         ),
       ),
