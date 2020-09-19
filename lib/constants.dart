@@ -73,10 +73,26 @@ const TextStyle normalTextStyle = TextStyle(
   fontWeight: FontWeight.normal,
 );
 
+
 const TextStyle credentialsTitleText = TextStyle(
   color: Colors.white,
   fontSize: 30,
   fontWeight: FontWeight.w500
 );
 
+
+
+
+const TextStyle fineBlueText = TextStyle(
+  color: neonGreen,
+  fontSize: 14,
+  fontWeight: FontWeight.w600,
+);
+
+
+const TextStyle finePurpleText = TextStyle(
+  color: titleColor,
+  fontSize: 14,
+  fontWeight: FontWeight.w600,
+);
 
