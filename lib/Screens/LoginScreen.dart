@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import '../Custom/page_title.dart';
 import '../constants.dart';
 
-
-
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key}) : super(key: key);
 
@@ -12,6 +10,26 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override 
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  void navToSignup(){
+    print("Nav to Signup");
+  }
+
+  void login(){
+    // TODO: Implement Login Process
+    print("logging in");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,18 +52,32 @@ class _LoginScreenState extends State<LoginScreen> {
                 alignment: Alignment.topLeft,
                 child: Text("Login", style: subTextStyle),
               ),
-  
+
               // Email Form
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               Container(
                 margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
                 child: Row(
                   children: <Widget>[
-                    Flexible(child: Text("Email: ", style: standardWhiteTitle)),
-                    Flexible(child: Padding(
-                      padding: const EdgeInsets.fromLTRB(8.0, 0, 0, 0),
-                      child: TextField(cursorColor: Colors.white, style: TextStyle(color: Colors.white),),
-                    ),)
+                    Flexible(
+                        child: Text("Email: ", style: standardWhiteTitle)),
+                    Flexible(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(8.0, 0, 0, 0),
+                        child: TextField(
+                          controller: emailController,
+                          decoration: InputDecoration(
+                              hintText: 'Enter Email',
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Color(0xff707070)),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Color(0xff707070)),
+                              )),
+                          style: TextStyle(color: titleColor),
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -56,11 +88,26 @@ class _LoginScreenState extends State<LoginScreen> {
                 margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
                 child: Row(
                   children: <Widget>[
-                    Flexible(child: Text("Password: ", style: standardWhiteTitle)),
-                    Flexible(child: Padding(
-                      padding: const EdgeInsets.fromLTRB(8.0, 0, 0, 0),
-                      child: TextField(cursorColor: Colors.white, style: TextStyle(color: Colors.white),),
-                    ),)
+                    Flexible(
+                        child: Text("Password: ", style: standardWhiteTitle)),
+                    Flexible(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(8.0, 0, 0, 0),
+                        child: TextField(
+                          controller: passwordController,
+                          obscureText: true,
+                          decoration: InputDecoration(
+                              hintText: 'Enter Password',
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Color(0xff707070)),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Color(0xff707070)),
+                              )),
+                          style: TextStyle(color: titleColor),
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -70,14 +117,16 @@ class _LoginScreenState extends State<LoginScreen> {
               ButtonTheme(
                 height: 50,
                 minWidth: 120,
-                              child: FlatButton(
-                  onPressed: () { print("GO TO LOGIN"); }, // TODO: Implement LOGIN API
+                child: FlatButton(
+                  onPressed: this.login,
                   color: purpleColor,
                   textColor: Colors.white,
-                  child: Text("Log in", style: standardWhiteDetail,),
+                  child: Text(
+                    "Log in",
+                    style: standardWhiteDetail,
+                  ),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0), 
-                      
+                    borderRadius: BorderRadius.circular(18.0),
                   ),
                 ),
               ),
@@ -88,9 +137,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text("Don't have an account?", style: finePurpleText,),
-                    SizedBox(width: 5,),
-                    Text("Sign Up", style: fineBlueText)
+                    Text(
+                      "Don't have an account?",
+                      style: finePurpleText,
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    GestureDetector(
+                      child: Text("Sign Up", style: fineBlueText),
+                      onTap: this.navToSignup,
+                    )
+                    
                   ],
                 ),
               )
@@ -100,4 +158,6 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+  
+  
 }
