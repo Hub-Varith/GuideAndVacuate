@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "455185418375",
+    "firebase_url": "https://hackmit-df9ea.firebaseio.com",
+    "project_id": "hackmit-df9ea",
+    "storage_bucket": "hackmit-df9ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455185418375:android:94f23ce63d3fdaafed1022",
+        "android_client_info": {
+          "package_name": "com.bigbrain.vacuate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "455185418375-3linhenp6qg9lfbbq0bkh8c7dfiv4qtk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTg62KxKGJYFCCpuo_73OP0ypgAucfto8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "455185418375-3linhenp6qg9lfbbq0bkh8c7dfiv4qtk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
