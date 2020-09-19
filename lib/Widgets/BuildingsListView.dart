@@ -20,7 +20,7 @@ class _BuildingsListViewState extends State<BuildingsListView> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: null,
+      onTap: () => Navigator.of(context).pushNamed("/office_info"),
       child: CustomCard(
         child: Container(
           height: MediaQuery.of(context).size.height * 0.25,
