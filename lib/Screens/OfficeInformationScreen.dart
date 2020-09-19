@@ -14,11 +14,10 @@ import '../Custom/camera_card.dart';
 import '../Custom/page_title.dart';
 import '../constants.dart';
 import '../models/sensorData.dart';
-import 'dart:convert';
 
 class OfficeInformationScreen extends StatefulWidget {
-  OfficeInformationScreen({Key key}) : super(key: key);
-
+  OfficeInformationScreen({Key key, this.liveDb}) : super(key: key);
+  final FirebaseApp liveDb;
   _OfficeInformationScreenState createState() =>
       _OfficeInformationScreenState();
 }
@@ -28,7 +27,6 @@ class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
   SensorHandler sensorHandler;
   Room room;
   bool loading = true;
-  FirebaseApp app;
   
   SensorData _sensor;
   DatabaseReference _sensorRef;
@@ -42,48 +40,34 @@ class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
     this.sensorHandler = SensorHandler(this.device);
     this.room = Room();
 
-    Firebase.initializeApp(
-      name: 'db1',
-      options: FirebaseOptions(
-              appId: '1:455185418375:web:b244dc03c4ab7440ed1022',
-              apiKey: 'AIzaSyCOJbAKgkCEvTjHqUnEH4Oyt1NGqkiMLNQ',
-              messagingSenderId: '455185418375',
-              projectId: 'hackmit-df9ea',
-              databaseURL: 'https://hackmit-df9ea.firebaseio.com',
-            ),
-    ).then((_app){
-      app = _app;
-      this.loading = false;
-      this._sensorRef = FirebaseDatabase.instance.reference().child("SensorData");
-      _sensorRef.keepSynced(true);
-      _sensorSubscription = _sensorRef.onValue.listen((Event e) {
-        setState((){
-          _error = null;
-          _sensor = SensorData.fromJson(e.snapshot.value) ?? "";
-          print(_sensor);
-        });
-      }, onError: (Object o) {
-        final DatabaseError error = o;
-        setState(() {
-         _error = error; 
-        });
+    
+    this._sensorRef = FirebaseDatabase.instance.reference().child("SensorData");
+    _sensorRef.keepSynced(true);
+    _sensorSubscription = _sensorRef.onValue.listen((Event e) {
+      setState((){
+        _error = null;
+        _sensor = SensorData.fromJson(e.snapshot.value) ?? "";
       });
-
+    }, onError: (Object o) {
+      final DatabaseError error = o;
+      setState(() {
+        _error = error; 
+      });
     });
+
   }
 
   @override
   void dispose() {
     super.dispose();
     _sensorSubscription.cancel();
-    app.delete();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgColor,
-      body: (this.device != null && this.sensorHandler != null && !this.loading ) ?SafeArea(
+      body: (this.device != null && this.sensorHandler != null && _sensor != null) ?SafeArea(
         child: Container(
           width: double.infinity,
           height: MediaQuery.of(context).size.height,

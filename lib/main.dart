@@ -11,10 +11,20 @@ import 'Services/UserAuthProvider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+var liveDb;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  
+  liveDb = await Firebase.initializeApp(
+      name: 'db2',
+      options: FirebaseOptions(
+              appId: '1:455185418375:web:b244dc03c4ab7440ed1022',
+              apiKey: 'AIzaSyCOJbAKgkCEvTjHqUnEH4Oyt1NGqkiMLNQ',
+              messagingSenderId: '455185418375',
+              projectId: 'hackmit-df9ea',
+              databaseURL: 'https://hackmit-df9ea.firebaseio.com',
+            ),
+    );
   runApp(MyApp());
 }
 
@@ -55,7 +65,7 @@ class MyApp extends StatelessWidget {
           initialRoute: '/',
           routes: {
             // '/': (context) => HomeScreen(),
-            '/office_info': (context) => OfficeInformationScreen(),
+            '/office_info': (context) => OfficeInformationScreen(liveDb: liveDb),
             "/add_routes": (context) => AddRoutesScreen(),
             //Temporary
             '/signup_screen': (context) => SignupScreen(),
