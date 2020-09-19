@@ -28,11 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text("Buildings", style: subTextStyle),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-              Column(
-                children: [
-                  
-                ],
-              ),
+              
             ],
           ),
         ),
