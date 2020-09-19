@@ -1,15 +1,16 @@
 import 'dart:math';
 
 import 'device.dart';
+import 'sensor.dart';
 
 class SensorHandler {
   static final double EPSILON = 0.000001;
 
   var sensors = [
-    [300.0, 300.0, null], // red
-    [0.0, 300.0, null], // green
-    [0.0, 0.0, null], // blue
-    [300.0, 0.0, null] // pink
+    Sensor(300.0 , 300.0),// red
+    Sensor(0.0 , 300.0),// green
+    Sensor(0.0 , 0.0),// blue
+    Sensor(300.0 , 0.0),// pink
   ];
 
   double _distanceFormula(x1, x2, y1, y2){
@@ -17,21 +18,23 @@ class SensorHandler {
   }
 
   SensorHandler(Device device){
+    // Part of Simulation
+    // In reality, we would make a fetch to see Bluetooth signal strength and convert that to distance
     for(int i = 0; i < this.sensors.length; i++){
-      this.sensors[i][2] = _distanceFormula(device.x, this.sensors[i][0], device.y, this.sensors[i][1]);
+      this.sensors[i].setRadius(_distanceFormula(device.x, this.sensors[i].x, device.y, this.sensors[i].y));
     }
   }
 
   Iterable<double> approximateDevice(){
-    double x0 = sensors[0][0];
-    double y0 = sensors[0][1];
-    double r0 = sensors[0][2];
-    double x1 = sensors[1][0];
-    double y1 = sensors[1][1];
-    double r1 = sensors[1][2];
-    double x2 = sensors[2][0];
-    double y2 = sensors[2][1];
-    double r2 = sensors[2][2];
+    double x0 = sensors[0].x;
+    double y0 = sensors[0].y;
+    double r0 = sensors[0].r;
+    double x1 = sensors[1].x;
+    double y1 = sensors[1].y;
+    double r1 = sensors[1].r;
+    double x2 = sensors[2].x;
+    double y2 = sensors[2].y;
+    double r2 = sensors[2].r;
     double a, dx, dy, d, h, rx, ry;
     double point2_x, point2_y;
 

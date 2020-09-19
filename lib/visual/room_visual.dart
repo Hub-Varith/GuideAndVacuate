@@ -13,14 +13,14 @@ class RoomVisualPainter extends CustomPainter {
       ..color = Colors.black;
     for(int i = 0; i < sensors.length; i++){
       canvas.drawRect(
-        Rect.fromPoints(Offset(sensors[i][0], sensors[i][1]), Offset(150, 150)),
+        Rect.fromPoints(Offset(sensors[i].x, sensors[i].y), Offset(150, 150)),
         paint,
       );
     }
 
     paint ..color = Colors.yellow;
     for(int i = 0; i < sensors.length; i++){
-      canvas.drawCircle(Offset(sensors[i][0], sensors[i][1]), 2, paint);
+      canvas.drawCircle(Offset(sensors[i].x, sensors[i].y), 2, paint);
     }
 
     
