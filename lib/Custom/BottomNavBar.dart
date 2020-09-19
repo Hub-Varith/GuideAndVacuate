@@ -24,7 +24,7 @@ class BottomNavBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             GestureDetector(
-              onTap: () => Navigator.of(context).pushNamed("/"),
+              onTap: () => Navigator.of(context).pushNamed("/home_screen"),
               child: Icon(
                 Icons.home,
                 size: 60,
