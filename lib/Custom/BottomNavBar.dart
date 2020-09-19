@@ -1,9 +1,13 @@
+import 'package:Vacuate/Services/UserAuthProvider.dart';
 import 'package:flutter/material.dart';
 import '../constants.dart';
+import 'package:provider/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var _userAuth = Provider.of<UserAuthProvider>(context);
     return Container(
       height: MediaQuery.of(context).size.height * 0.10,
       width: double.infinity,
@@ -28,7 +32,7 @@ class BottomNavBar extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              onTap: () => Navigator.of(context).pushNamed("/signup_screen"),
+              onTap: () => _userAuth.signOut(),
               child: Icon(
                 Icons.person_outline,
                 size: 60,
