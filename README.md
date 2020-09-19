@@ -2,6 +2,8 @@
 # Vacuate
 
 A new Flutter project.
+Run (In Pjt Directory):
+>vue start serve
 
 ## Getting Started
 
