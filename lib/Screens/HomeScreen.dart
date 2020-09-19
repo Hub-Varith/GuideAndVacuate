@@ -1,4 +1,5 @@
 import 'package:Vacuate/Custom/BottomNavBar.dart';
+import 'package:Vacuate/Custom/fob.dart';
 import 'package:flutter/material.dart';
 import 'package:Vacuate/constants.dart';
 import 'package:Vacuate/Custom/page_title.dart';
@@ -56,16 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Container(
-        height: 75,
-        width: 75,
-        child: RawMaterialButton(
-          shape: CircleBorder(),
-          fillColor: pinkishColor,
-          child: Icon(Icons.directions_run, color: Colors.black, size: 50),
-          onPressed: () {},
-        ),
-      ),
+      floatingActionButton: FOB(),
       bottomNavigationBar: BottomNavBar(),
     );
   }
