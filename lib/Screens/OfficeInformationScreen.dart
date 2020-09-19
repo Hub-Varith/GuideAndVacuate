@@ -1,6 +1,8 @@
 
 import 'package:Vacuate/Custom/BottomNavBar.dart';
+import 'package:Vacuate/Custom/fob.dart';
 import 'package:Vacuate/positional_tracking/device.dart';
+import 'package:Vacuate/positional_tracking/room.dart';
 import 'package:Vacuate/positional_tracking/sensor_handler.dart';
 import 'package:Vacuate/visual/room_visual.dart';
 import 'package:flutter/material.dart';
@@ -19,12 +21,14 @@ class OfficeInformationScreen extends StatefulWidget {
 class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
   Device device;
   SensorHandler sensorHandler;
+  Room room;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     this.device = Device();
     this.sensorHandler = SensorHandler(this.device);
+    this.room = Room();
   }
 
   @override
@@ -52,7 +56,7 @@ class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
                   width: 300,
                   height: 300,
                   margin: EdgeInsets.fromLTRB(50, 0, 0, 0),
-                  child: CustomPaint(painter: RoomVisualPainter(sensors: this.sensorHandler.sensors, device: this.sensorHandler.approximateDevice())),
+                  child: CustomPaint(painter: RoomVisualPainter(sensors: this.sensorHandler.sensors, device: this.sensorHandler.approximateDevice(), room: this.room)),
               ),
               
               SizedBox(height: MediaQuery.of(context).size.height * 0.04),
@@ -91,16 +95,7 @@ class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
         ),
       ) : Text("Loading..."),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Container(
-        height: 75,
-        width: 75,
-        child: RawMaterialButton(
-          shape: CircleBorder(),
-          fillColor: pinkishColor,
-          child: Icon(Icons.directions_run, color: Colors.black, size: 50),
-          onPressed: () {},
-        ),
-      ),
+      floatingActionButton: FOB(),
       bottomNavigationBar: BottomNavBar(),
     );
   }
