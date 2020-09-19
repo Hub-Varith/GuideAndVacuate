@@ -39,3 +39,9 @@ const TextStyle redTextStyle = TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.w600,
 );
+
+const TextStyle normalTextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 15,
+  fontWeight: FontWeight.normal,
+);
