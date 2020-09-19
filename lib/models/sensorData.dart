@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class SensorData {
   int infared;
   int gas;
@@ -12,11 +14,14 @@ class SensorData {
     this.temperature
   });
 
-  SensorData.fromJson(Map<String, dynamic> json) {
-    infared = json['infared'];
-    gas = json['gas'];
-    monoxide = json['monoxide'];
-    temperature = json['temperature'];
+  SensorData.fromJson(Map<dynamic, dynamic> d) {
+    
+    d = jsonDecode(jsonEncode(d));
+    print(d);
+    this.infared = d['Infared'] ?? null;
+    this.gas = d['Gas'] ?? null;
+    this.monoxide = d['Monoxide'] ?? null;
+    this.temperature = d['Temperature'] ?? null;
   }
 
   Map<String, dynamic> toJson() {
