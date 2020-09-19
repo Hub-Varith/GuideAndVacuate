@@ -1,18 +1,23 @@
 
+import 'dart:async';
+
 import 'package:Vacuate/Custom/BottomNavBar.dart';
 import 'package:Vacuate/Custom/fob.dart';
 import 'package:Vacuate/positional_tracking/device.dart';
 import 'package:Vacuate/positional_tracking/room.dart';
 import 'package:Vacuate/positional_tracking/sensor_handler.dart';
 import 'package:Vacuate/visual/room_visual.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import '../Custom/camera_card.dart';
 import '../Custom/page_title.dart';
 import '../constants.dart';
+import '../models/sensorData.dart';
 
 class OfficeInformationScreen extends StatefulWidget {
-  OfficeInformationScreen({Key key}) : super(key: key);
-
+  OfficeInformationScreen({Key key, this.liveDb}) : super(key: key);
+  final FirebaseApp liveDb;
   _OfficeInformationScreenState createState() =>
       _OfficeInformationScreenState();
 }
@@ -21,19 +26,48 @@ class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
   Device device;
   SensorHandler sensorHandler;
   Room room;
+  bool loading = true;
+  
+  SensorData _sensor;
+  DatabaseReference _sensorRef;
+  StreamSubscription<Event> _sensorSubscription;
+  DatabaseError _error;
+
   @override
   void initState() {
     super.initState();
     this.device = Device();
     this.sensorHandler = SensorHandler(this.device);
     this.room = Room();
+
+    
+    this._sensorRef = FirebaseDatabase.instance.reference().child("SensorData");
+    _sensorRef.keepSynced(true);
+    _sensorSubscription = _sensorRef.onValue.listen((Event e) {
+      setState((){
+        _error = null;
+        _sensor = SensorData.fromJson(e.snapshot.value) ?? "";
+      });
+    }, onError: (Object o) {
+      final DatabaseError error = o;
+      setState(() {
+        _error = error; 
+      });
+    });
+
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _sensorSubscription.cancel();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgColor,
-      body: (this.device != null && this.sensorHandler != null) ?SafeArea(
+      body: (this.device != null && this.sensorHandler != null && _sensor != null) ?SafeArea(
         child: Container(
           width: double.infinity,
           height: MediaQuery.of(context).size.height,
@@ -65,9 +99,9 @@ class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
                 alignment: Alignment.topLeft,
                 child: Text("Camera Sensor Values", style: subTextStyle),
               ),
-              Container( child: CameraCard(), padding: EdgeInsets.fromLTRB(15, 0, 15, 0)),
+              Container( child: CameraCard(cameraName: "Camera 1", monoxide: _sensor.monoxide, roomTemp: _sensor.temperature,), padding: EdgeInsets.fromLTRB(15, 0, 15, 0)),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-              Container( child: CameraCard(), padding: EdgeInsets.fromLTRB(15, 0, 15, 0)),
+              Container( child: CameraCard(cameraName: "Camera 1", monoxide: _sensor.monoxide, roomTemp: _sensor.temperature), padding: EdgeInsets.fromLTRB(15, 0, 15, 0)),
 
               // Add Route Button
               SizedBox(height: MediaQuery.of(context).size.height * 0.04),
