@@ -2,9 +2,9 @@ import 'package:Vacuate/constants.dart';
 import 'package:flutter/material.dart';
 
 class DirectionTile extends StatelessWidget {
-  final Widget child;
+  final Icon icon;
   final double size;
-  const DirectionTile({Key key, this.child, this.size}) : super(key: key);
+  const DirectionTile({Key key, this.icon, this.size}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,13 @@ class DirectionTile extends StatelessWidget {
       
       height: size,
       width: size,
-      child: child,
+      child: icon,
     );
   }
 }
+
+// Icon(
+//   Icons.arrow_back = LEFT, // arrow_downward = DOWNWARD/REVERSE // arrow_upward = UPWARD // arrow_forward= RIGHTWARD
+//   color: Colors.white,
+//   size: 70,
+// ),
