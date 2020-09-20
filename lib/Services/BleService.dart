@@ -61,8 +61,6 @@ class BtServices with ChangeNotifier {
 
   void stopPeripheralScan() {
     _bleManager.stopPeripheralScan();
-    visibleDevicesController.close();
-    visibleDevicesController.sink;
   }
 
   // void _addScannedDevices(title, Peripheral peripheral,
