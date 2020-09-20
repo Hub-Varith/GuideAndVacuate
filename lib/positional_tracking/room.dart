@@ -78,7 +78,6 @@ class Room {
     ShallowComparison accessRoute = shallowCheck(quadrant, []);
     
     var pointPositions = accessRoute.quadMovement.reversed.toList();
-    print(pointPositions);
     List<List<double>> points = [];
     for(int i = 0; i < pointPositions.length; i++){
       if (pointPositions[i] < 0){
@@ -98,7 +97,6 @@ class Room {
         }
       }
     }
-    print(points);
     return points;
   }
 }
