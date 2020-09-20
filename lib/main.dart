@@ -1,4 +1,5 @@
 import 'package:Vacuate/Screens/AddRoutesScreen.dart';
+import 'package:Vacuate/Screens/EvacuationScreen.dart';
 import 'package:Vacuate/Screens/LoginScreen.dart';
 import 'package:Vacuate/Screens/OfficeInformationScreen.dart';
 import 'package:Vacuate/Screens/SignupScreen.dart';
@@ -71,6 +72,7 @@ class MyApp extends StatelessWidget {
             '/signup_screen': (context) => SignupScreen(),
             '/login_screen' : (context) => LoginScreen(),
             '/home_screen': (context) => HomeScreen(),
+            '/evacuation_screen': (context) => EvacuationScreen(),
           }),
     );
   }
