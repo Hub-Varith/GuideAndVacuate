@@ -35,6 +35,8 @@ dependencies:
   firebase_database: "^4.0.0"
   flutter_ble_lib: ^2.3.0
   permission_handler: ^4.2.0+hotfix.3
+  flutter_ibm_watson: ^0.0.1
+  soundpool: ^1.1.1
   
   # geolocator: ^6.0.0+4
   # google_maps_flutter: ^0.5.32
