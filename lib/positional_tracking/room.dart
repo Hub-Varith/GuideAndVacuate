@@ -1,9 +1,11 @@
+
 import 'package:Vacuate/positional_tracking/sensor.dart';
 
 class Room {
   var doorWays = [
+    
+    [175.0, 0.0, 25.0, 1.0],
     [75.0, 300.0, 20.0, 1.0],
-    [175.0, 0.0, 25.0, 1.0]
   ];
 
   var intermediateDoors = [
@@ -32,7 +34,36 @@ class Room {
     return prod<0;
   }
 
-  List<List<double>> findPath(List<Sensor> sensors, device){
+  ShallowComparison shallowCheck(quadrant, List<int> prevQuads){
+    var potentialDepth = [];
+    var copycat = graph[quadrant-1];
+    copycat.removeWhere( (a) => prevQuads.contains(a));
+    for (int i = 0; i< copycat.length; i++){
+      if (copycat[i] < 0){
+        // If negative door exists in the list
+        return ShallowComparison(length: 1, quadMovement: [copycat[i]]);
+      }else{
+        prevQuads.add(quadrant);
+        ShallowComparison obj = shallowCheck(copycat[i], prevQuads);
+        obj.length  += 1;
+        obj.quadMovement.add(copycat[i]);
+        potentialDepth.add(
+          obj
+        );
+      }
+    }
+    int shortest = 1000;
+    ShallowComparison low;
+    for(int i = 0; i < potentialDepth.length; i++){
+      if(potentialDepth[i].length < shortest){
+        low = potentialDepth[i];
+      }
+    }
+    return low;
+
+  }
+
+  List<dynamic> findPath(List<Sensor> sensors, device){
     // Locate what quadrant you are in
     double lowest = 10000;
     int quadrant = -1;
@@ -42,40 +73,39 @@ class Room {
         quadrant = i+1;
       }
     }
-
-    if (exitTest(graph[quadrant-1])){
-      // You are in location which is next to exit
-      // find the negative number
-      var d = -1;
-      for(int i =0; i < graph[quadrant-1].length; i++){
-        if(graph[quadrant-1][i] < 0){
-          d = graph[(quadrant)%doorWays.length][i];
+    
+    // Round One Options
+    ShallowComparison accessRoute = shallowCheck(quadrant, []);
+    
+    var pointPositions = accessRoute.quadMovement.reversed.toList();
+    print(pointPositions);
+    List<List<double>> points = [];
+    for(int i = 0; i < pointPositions.length; i++){
+      if (pointPositions[i] < 0){
+        int k = doorWays.length + pointPositions[i];
+        points.add(doorWays[k]);
+      }else{
+        if(quadrant * pointPositions[i] == 8){
+          points.add(intermediateDoors[1-1]);
+        }else{
+          int big;
+          if(quadrant > pointPositions[i]){
+            big = quadrant;
+          }else{
+            big = pointPositions[i];
+          }
+          points.add(intermediateDoors[big-1]);
         }
       }
-      return [doorWays[d % doorWays.length]];
-    }else if( exitTest( graph[graph[(quadrant+1)%intermediateDoors.length][0]] )){
-      // Which way do we go
-      int iDoor = quadrant+1 - (quadrant+1 - graph[quadrant+1][0]);
-      var d = -1;
-      for(int i =0; i < graph[graph[quadrant+1][0]].length; i++){
-        if(graph[quadrant+1][i] < 0){
-          d = graph[quadrant+1][i];
-        }
-      }
-      return [intermediateDoors[iDoor % intermediateDoors.length], doorWays[d % doorWays.length]];
-    }else if(exitTest( graph[graph[quadrant % intermediateDoors.length][1]])){
-      // Which way do we go
-      int iDoor = quadrant+1 - (quadrant+1 - graph[quadrant+1][0]);
-      var d = -1;
-      for(int i =0; i < graph[graph[quadrant+1][0]].length; i++){
-        if(graph[quadrant+1][i] < 0){
-          d = graph[quadrant+1][i];
-        }
-      }
-      return [intermediateDoors[iDoor % intermediateDoors.length], doorWays[d % doorWays.length]];
-    }else{
-      print("Impossible path");
     }
-
+    print(points);
+    return points;
   }
+}
+
+class ShallowComparison {
+  int length;
+  List<int> quadMovement;
+
+  ShallowComparison({this.length, this.quadMovement});
 }
