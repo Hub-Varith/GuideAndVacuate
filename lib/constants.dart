@@ -27,6 +27,13 @@ const TextStyle subTextStyle = TextStyle(
   fontSize: 30,
 );
 
+const TextStyle subtleSubTextStyle = TextStyle(
+  fontFamily: "Kanit",
+  color: neonGreen,
+  fontWeight: FontWeight.bold,
+  fontSize: 16,
+);
+
 const TextStyle cardTextStyle = TextStyle(
   fontFamily: "Kanit",
   color: neonGreen,
