@@ -72,7 +72,31 @@ class _EvacuationScreenState extends State<EvacuationScreen> {
                     return Text("Finding Location...", style: subTextStyle);
                   }
                   return Text(
-                    "rssi = ${snapshot.data[1].toString()}\nname = ${snapshot.data[0].toString()} ",
+                    "rssi = ${snapshot.data[1].toString()} name = ${snapshot.data[0].toString()} ",
+                    style: normalTextStyle,
+                  );
+                },
+              ),
+              StreamBuilder<List>(
+                stream: bleService.visibleDevices2,
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return Text("Finding Location...", style: subTextStyle);
+                  }
+                  return Text(
+                    "rssi = ${snapshot.data[1].toString()} name = ${snapshot.data[0].toString()} ",
+                    style: normalTextStyle,
+                  );
+                },
+              ),
+              StreamBuilder<List>(
+                stream: bleService.visibleDevices3,
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return Text("Finding Location...", style: subTextStyle);
+                  }
+                  return Text(
+                    "rssi = ${snapshot.data[1].toString()} name = ${snapshot.data[0].toString()} ",
                     style: normalTextStyle,
                   );
                 },
