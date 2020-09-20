@@ -82,7 +82,11 @@ class BtServices with ChangeNotifier {
     _scanSubscription = _bleManager.startPeripheralScan(
         uuids: ["0000feed-0000-1000-8000-00805f9b34fb", "cbbfe0e1-f7f3-4206-84e0-84cbb3d09dfc"]).listen(
       (ScanResult result) {
+        var r1 = result.rssi;
+        var r2 = result.rssi;
+        var r3 = result.rssi;
         if (result.peripheral.identifier == "C2:BC:40:D7:70:68") {
+          r1 = result.rssi;
           Map<String, dynamic> devicesInformation = {
             "name": result.peripheral.name,
             "rssi": result.rssi,
@@ -92,6 +96,7 @@ class BtServices with ChangeNotifier {
           visibleDevicesController.add(devicesInfo);
           notifyListeners();
         } else if (result.peripheral.identifier == "EA:B2:4D:8C:6E:12") {
+          r2 = result.rssi;
           Map<String, dynamic> devicesInformation2 = {
             "name": result.peripheral.name,
             "rssi": result.rssi,
@@ -101,6 +106,7 @@ class BtServices with ChangeNotifier {
           visibleDevicesController2.add(devicesInfo);
           notifyListeners();
         } else if (result.peripheral.identifier == "84:0D:8E:33:F3:AE") {
+          r3 = result.rssi;
           Map<String, dynamic> devicesInformation3 = {
             "name": result.peripheral.name,
             "rssi": result.rssi,
@@ -110,6 +116,7 @@ class BtServices with ChangeNotifier {
           visibleDevicesController3.add(devicesInfo);
           notifyListeners();
         }
+        // calculatePhoneLocation()
       },
     );
   }
