@@ -1,34 +1,37 @@
 import 'dart:convert';
 
 class SensorData {
-  int infared;
-  int gas;
-  int monoxide;
-  int temperature;
+  bool FIRE;
+  double LPG;
+  double Monoxide;
+  int Temperature;
+  String day_of_the_week;
+  String timehour;
+  String timemin;
+  String timesec;
 
 
   SensorData({
-    this.infared,
-    this.gas,
-    this.monoxide,
-    this.temperature
+    this.FIRE,
+    this.LPG,
+    this.Monoxide,
+    this.Temperature,
+    this.day_of_the_week,
+    this.timehour,
+    this.timemin,
+    this.timesec
   });
 
   SensorData.fromJson(Map<dynamic, dynamic> d) {
     
     d = jsonDecode(jsonEncode(d));
-    this.infared = d['Infared'].toInt() ?? null;
-    this.gas = d['Gas'].toInt() ?? null;
-    this.monoxide = d['Monoxide'].toInt() ?? null;
-    this.temperature = d['Temperature'].toInt() ?? null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['infared'] = this.infared;
-    data['gas'] = this.gas;
-    data['monoxide'] = this.monoxide;
-    data['temperature'] = this.temperature;
-    return data;
+    this.FIRE = d["FIRE"] == 1 || d["Fire"] == "1" ? true : false;
+    this.LPG = d["LPG"].toDouble() ?? null;
+    this.Monoxide = d["Monoxide"].toDouble() ?? null;
+    this.Temperature = d["Temperature"].toInt() ?? null;
+    this.day_of_the_week = d["day_of_the_week"] ?? null;
+    this.timehour = d["timehour"] ?? null;
+    this.timemin = d["timemin"] ?? null;
+    this.timesec = d["timesec"] ?? null;
   }
 }

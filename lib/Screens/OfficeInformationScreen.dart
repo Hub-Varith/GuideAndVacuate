@@ -48,7 +48,7 @@ class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
       setState((){
         _error = null;
         _sensor = SensorData.fromJson(e.snapshot.value) ?? "";
-        sensorProvider.postSensorData(_sensor.monoxide, _sensor.temperature);
+        sensorProvider.postSensorData(_sensor);
       });
     }, onError: (Object o) {
       final DatabaseError error = o;
@@ -101,9 +101,9 @@ class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
                 alignment: Alignment.topLeft,
                 child: Text("Camera Sensor Values", style: subTextStyle),
               ),
-              Container( child: CameraCard(cameraName: "Camera 1", monoxide: _sensor.monoxide, roomTemp: _sensor.temperature,), padding: EdgeInsets.fromLTRB(15, 0, 15, 0)),
+              Container( child: CameraCard(cameraName: "Camera 1", monoxide: _sensor.Monoxide, roomTemp: _sensor.Temperature, fire: _sensor.FIRE, lpg: _sensor.LPG), padding: EdgeInsets.fromLTRB(15, 0, 15, 0)),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-              Container( child: CameraCard(cameraName: "Camera 1", monoxide: _sensor.monoxide, roomTemp: _sensor.temperature), padding: EdgeInsets.fromLTRB(15, 0, 15, 0)),
+              Container( child: CameraCard(cameraName: "Camera 1", monoxide: _sensor.Monoxide, roomTemp: _sensor.Temperature, fire: _sensor.FIRE, lpg: _sensor.LPG), padding: EdgeInsets.fromLTRB(15, 0, 15, 0)),
 
               // Add Route Button
               SizedBox(height: MediaQuery.of(context).size.height * 0.04),

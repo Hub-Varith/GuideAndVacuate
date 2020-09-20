@@ -1,17 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:provider/provider.dart';
-import 'package:Vacuate/Services/firebase_api.dart';
-import 'package:Vacuate/models/appUser.dart';
+
 
 class SensorProvider  {
-  Future<bool> postSensorData(monoxide, temperature) async{
+  Future<bool> postSensorData(_sensor) async{
     var timestamp = Timestamp.now();
     await FirebaseFirestore.instance.collection("sensor1").add({
-      "Timestamp": timestamp,
-      "Monoxide": monoxide,
-      "Temperature": temperature
+      "FIRE": _sensor.FIRE,
+      "LPG": _sensor.LPG,
+      "Monoxide": _sensor.Monoxide,
+      "Temperature": _sensor.Temperature,
+      "day of the week": _sensor.day_of_the_week,
+      "timehour": _sensor.timehour,
+      "timemin": _sensor.timemin,
+      "timesec": _sensor.timesec,
+      "uploadTimestamp": timestamp,
     });
     return true;
   }
