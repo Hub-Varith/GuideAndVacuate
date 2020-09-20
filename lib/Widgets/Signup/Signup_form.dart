@@ -105,12 +105,8 @@ class _SignUpFormState extends State<SignUpForm> {
                                     _username = value;
                                   },
                                   validator:
-                                      // if (value.isEmpty || value.length < 4) {
-                                      //   return "please enter at least 4 characters";
-                                      // }
                                       validateUsername,
 
-                                  // controller: _usernameController,
                                   decoration: InputDecoration(
                                     hintText: "Enter Username",
                                     enabledBorder: UnderlineInputBorder(
@@ -148,12 +144,6 @@ class _SignUpFormState extends State<SignUpForm> {
                                   onSaved: (value) {
                                     _userEmail = value;
                                   },
-                                  // validator: (value) {
-                                  //   if (value.isEmpty || !value.contains('@')) {
-                                  //     return "Please enter a valid email address.";
-                                  //   }
-                                  //   return null;
-                                  // },
                                   validator: validateEmail,
                                   decoration: InputDecoration(
                                     hintText: "Enter Email",
@@ -192,12 +182,6 @@ class _SignUpFormState extends State<SignUpForm> {
                                   onSaved: (value) {
                                     _userPassword = value;
                                   },
-                                  // validator: (value) {
-                                  //   if (value.isEmpty || value.length < 7) {
-                                  //     return "Password must be at least 7 characters long";
-                                  //   }
-                                  //   return null;
-                                  // },
                                   validator: validatePassword,
                                   obscureText: true,
                                   decoration: InputDecoration(
@@ -233,12 +217,6 @@ class _SignUpFormState extends State<SignUpForm> {
                             setState(() {
                               _loading = true;
                             });
-                            // _api.signUp(_userEmail, _userPassword);
-                            // widget.submitSignupForm(
-                            //   _username.trim(),
-                            //   _userEmail.trim(),
-                            //   _userPassword.trim(),
-                            // );
                             _formKey.currentState.save();
                             var result = await userAuth.signUp(
                                 _userEmail, _userPassword);
@@ -270,19 +248,6 @@ class _SignUpFormState extends State<SignUpForm> {
                             borderRadius: BorderRadius.circular(30),
                           ),
                         ),
-                        // onPressed: () async {
-                        //   FocusScope.of(context).unfocus();
-                        //   var result = await userAuth.signUp(
-                        //       _emailController.text, _passwordContrller.text);
-                        //   if (result == "success") {
-                        //     var appUser = AppUser(
-                        //       userEmail: _emailController.text,
-                        //       userName: _usernameController.text,
-                        //     );
-                        //     await userAuth.addProfile(_usernameController.text, appUser);
-                        //     print("Sign in Success");
-                        //   }
-                        // },
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
