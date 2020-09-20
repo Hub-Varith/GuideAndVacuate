@@ -14,6 +14,7 @@ class RoomVisualPainter extends CustomPainter {
   var device;
   Room room;
 
+
   @override
   void paint(Canvas canvas, Size size) {
     var paint = Paint()
