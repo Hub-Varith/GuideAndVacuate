@@ -3,6 +3,7 @@ import 'package:Vacuate/Screens/EvacuationScreen.dart';
 import 'package:Vacuate/Screens/LoginScreen.dart';
 import 'package:Vacuate/Screens/OfficeInformationScreen.dart';
 import 'package:Vacuate/Screens/SignupScreen.dart';
+import 'package:Vacuate/Services/BleService.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/services.dart';
@@ -50,6 +51,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => UserAuthProvider.instance(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => BtServices(),
+        ),
         // ChangeNotifierProvider(create: (_) => )
       ],
       child: MaterialApp(
@@ -72,8 +76,7 @@ class MyApp extends StatelessWidget {
           initialRoute: '/',
           routes: {
             // '/': (context) => HomeScreen(),
-            '/office_info': (context) =>
-                OfficeInformationScreen(),
+            '/office_info': (context) => OfficeInformationScreen(),
             "/add_routes": (context) => AddRoutesScreen(),
             //Temporary
             '/signup_screen': (context) => SignupScreen(),
