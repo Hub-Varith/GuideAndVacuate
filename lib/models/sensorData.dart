@@ -17,10 +17,10 @@ class SensorData {
   SensorData.fromJson(Map<dynamic, dynamic> d) {
     
     d = jsonDecode(jsonEncode(d));
-    this.infared = d['Infared'] ?? null;
-    this.gas = d['Gas'] ?? null;
-    this.monoxide = d['Monoxide'] ?? null;
-    this.temperature = d['Temperature'] ?? null;
+    this.infared = d['Infared'].toInt() ?? null;
+    this.gas = d['Gas'].toInt() ?? null;
+    this.monoxide = d['Monoxide'].toInt() ?? null;
+    this.temperature = d['Temperature'].toInt() ?? null;
   }
 
   Map<String, dynamic> toJson() {

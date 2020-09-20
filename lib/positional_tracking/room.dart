@@ -54,7 +54,7 @@ class Room {
       }
       print("Go to doorway" + doorWays[d % doorWays.length].toString());
       return [doorWays[d % doorWays.length]];
-    }else if( exitTest( graph[graph[quadrant+1][0]] )){
+    }else if( exitTest( graph[graph[(quadrant+1)%intermediateDoors.length][0]] )){
       // Which way do we go
       int iDoor = quadrant+1 - (quadrant+1 - graph[quadrant+1][0]);
       var d = -1;
