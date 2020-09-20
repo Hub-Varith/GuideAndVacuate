@@ -85,11 +85,11 @@ class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
                 child: Text("Office", style: subTextStyle),
               ),
               
-              
+              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               Container(
                   width: 300,
                   height: 300,
-                  margin: EdgeInsets.fromLTRB(50, 0, 0, 0),
+                  margin: EdgeInsets.fromLTRB(MediaQuery.of(context).size.height *.05, 0, 0, 0),
                   child: CustomPaint(painter: RoomVisualPainter(sensors: this.sensorHandler.sensors, device: this.sensorHandler.approximateDevice(), room: this.room)),
               ),
               

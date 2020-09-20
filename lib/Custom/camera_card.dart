@@ -45,11 +45,11 @@ class CameraCard extends StatelessWidget {
               children: <Widget>[
                 Row(children: <Widget>[
                   Text("Monoxide:   ", style: standardWhiteDetail,),
-                  Text(monoxide.toString() + " ", style: standardPurpleDetail)
+                  Text(monoxide.toStringAsFixed(2) + "%", style: standardPurpleDetail)
                 ],),
                 Row(children: <Widget>[
                   Text("LPG:   ", style: standardWhiteDetail,),
-                  Text(lpg.toString() + " ", style: standardPurpleDetail)
+                  Text(lpg.toStringAsFixed(2) + "%", style: standardPurpleDetail)
                 ],),
                 SizedBox(height: 15,),
                 Text("Room Temperature:   ", style: standardWhiteDetail,),
