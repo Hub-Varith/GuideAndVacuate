@@ -54,19 +54,20 @@ class _EvacuationScreenState extends State<EvacuationScreen> {
                 height: 300,
                 margin: EdgeInsets.fromLTRB(00, 0, 0, 0),
                 child: CustomPaint(
-                    painter: RoomVisualPainter(
-                        sensors: this.sensorHandler.sensors,
-                        device: this.sensorHandler.approximateDevice(),
-                        room: this.room)),
+                  painter: RoomVisualPainter(
+                    sensors: this.sensorHandler.sensors,
+                    device: this.sensorHandler.approximateDevice(),
+                    room: this.room,
+                    bleService: bleService,
+                  ),
+                ),
               ),
               SizedBox(height: 20),
               StreamBuilder<List>(
                 stream: bleService.visibleDevices,
                 builder: (context, snapshot) {
-                  // String name = snapshot.data[0][0];
-                  // String rssi = snapshot.data[1][0];
                   if (!snapshot.hasData) {
-                    return Text("No data...", style: subTextStyle);
+                    return Text("Finding Location...", style: subTextStyle);
                   }
                   return Text(
                     "rssi = ${snapshot.data[1].toString()}\nname = ${snapshot.data[0].toString()} ",
@@ -81,9 +82,6 @@ class _EvacuationScreenState extends State<EvacuationScreen> {
                     alignment: Alignment.center,
                     child: GestureDetector(
                       onTap: () {
-                        bleService
-                            .initializeBle()
-                            .then((value) => bleService.init());
                       },
                       child: HighlightedText(text: "Locate"),
                     ),
