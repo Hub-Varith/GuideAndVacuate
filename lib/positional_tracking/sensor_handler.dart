@@ -7,10 +7,12 @@ class SensorHandler {
   static final double EPSILON = 0.000001;
 
   var sensors = [
-    Sensor(300.0 , 300.0),// red
-    Sensor(0.0 , 300.0),// green
-    Sensor(0.0 , 0.0),// blue
     Sensor(300.0 , 0.0),// pink
+    Sensor(0.0 , 0.0),// blue
+    
+    Sensor(0.0 , 300.0),// green
+    Sensor(300.0 , 300.0),// red
+    
   ];
 
   double _distanceFormula(x1, x2, y1, y2){
