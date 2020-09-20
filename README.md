@@ -1,22 +1,11 @@
-<<<<<<< HEAD
-# Vacuate
+# Guide And Veacuate
+*Our mission is to save lives by providing people smart emergency guidance and evacuation safety*
 
-A new Flutter project.
-Run (In Pjt Directory):
->vue start serve
+## Mobile App
+[Link to Mobile App Github Repository](https://github.com/iBessonob/GuideAndVacuate)
 
-## Getting Started
+## Hardware and Sensors
+[Link to Hardware and Sensors Github Repository](https://github.com/iBessonob/GuideAndVacuate-Hardware)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-=======
-# HackMIT
->>>>>>> 0d3fa946dc01175190cdbdcde4f441ea37f0b2d2
+## Website
+[Link to Admin Access Website Github Repository](https://github.com/iBessonob/GuideAndVacuate-WebApp)
