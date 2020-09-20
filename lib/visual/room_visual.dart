@@ -54,7 +54,12 @@ class RoomVisualPainter extends CustomPainter {
 
     // Pick optimal route of exit
     var spots = room.findPath(sensors, device);
-    print(spots);
+    paint ..color = Colors.pink;
+    var old = device;
+    for(int i = 0; i < spots.length; i++){
+      canvas.drawLine(Offset(old[0], old[1]), Offset(spots[i][0], spots[i][1]), paint);
+      old = [spots[i][0], spots[i][1]];
+    }
 
   }
 
