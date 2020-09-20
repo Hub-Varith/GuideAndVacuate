@@ -100,7 +100,7 @@ class BtServices with ChangeNotifier {
           print(result.peripheral);
           visibleDevicesController2.add(devicesInfo);
           notifyListeners();
-        } else if (result.peripheral.identifier == "C8:28:32:E1:52:63") {
+        } else if (result.peripheral.identifier == "84:0D:8E:33:F3:AE") {
           Map<String, dynamic> devicesInformation3 = {
             "name": result.peripheral.name,
             "rssi": result.rssi,
