@@ -7,9 +7,7 @@ import 'package:Vacuate/positional_tracking/sensor_handler.dart';
 import 'package:Vacuate/visual/room_visual.dart';
 import 'package:flutter/material.dart';
 import 'package:Vacuate/constants.dart';
-import 'package:Vacuate/visual/room_visual.dart';
 import 'package:provider/provider.dart';
-import 'package:Vacuate/positional_tracking/device.dart';
 import 'package:Vacuate/Services/BleService.dart';
 
 class EvacuationScreen extends StatefulWidget {
