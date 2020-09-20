@@ -52,6 +52,10 @@ class RoomVisualPainter extends CustomPainter {
       );
     }
 
+    // Pick optimal route of exit
+    var spots = room.findPath(sensors, device);
+    print(spots);
+
   }
 
   @override
