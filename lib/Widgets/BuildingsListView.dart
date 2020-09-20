@@ -81,7 +81,7 @@ class _BuildingsListViewState extends State<BuildingsListView> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
+                  padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.height * 0.01, 0, 0, 0),
                   alignment: Alignment.center,
                   child: Image.asset(
                     "assets/images/map.png",
