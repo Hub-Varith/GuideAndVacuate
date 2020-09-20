@@ -4,14 +4,12 @@ import "custom_card.dart";
 import 'package:flutter/material.dart';
 
 class CameraCard extends StatelessWidget {
-  final int roomTemp;
-  final int monoxide;
   final String cameraName;
-  const CameraCard({Key key, this.cameraName, this.roomTemp, this.monoxide}) : super(key: key);
-
-  final int heat = 40;
-  
-  final bool fire = false;
+  final int roomTemp;
+  final double monoxide;
+  final bool fire;
+  final double lpg;
+  const CameraCard({Key key, this.cameraName, this.roomTemp, this.monoxide, this.fire, this.lpg}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +45,11 @@ class CameraCard extends StatelessWidget {
               children: <Widget>[
                 Row(children: <Widget>[
                   Text("Monoxide:   ", style: standardWhiteDetail,),
-                  Text(monoxide.toString() + " %", style: standardPurpleDetail)
+                  Text(monoxide.toString() + " ", style: standardPurpleDetail)
+                ],),
+                Row(children: <Widget>[
+                  Text("LPG:   ", style: standardWhiteDetail,),
+                  Text(lpg.toString() + " ", style: standardPurpleDetail)
                 ],),
                 SizedBox(height: 15,),
                 Text("Room Temperature:   ", style: standardWhiteDetail,),
