@@ -15,7 +15,9 @@ class FOB extends StatelessWidget {
           shape: CircleBorder(),
           fillColor: pinkishColor,
           child: Icon(Icons.directions_run, color: Colors.black, size: 50),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed("/evacuation_screen");
+          },
         ),
       ),
       
