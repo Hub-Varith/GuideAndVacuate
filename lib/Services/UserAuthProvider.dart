@@ -29,10 +29,6 @@ class UserAuthProvider with ChangeNotifier {
     return AppUser.fromJson(result.data());
   }
 
-  // void signOut() {
-  //   FirebaseAuth.instance.signOut();
-  // }
-
   Future<bool> saveUserProfileData(
       String userId, String username, String email) async {
     DocumentSnapshot ds = await FirebaseFirestore.instance

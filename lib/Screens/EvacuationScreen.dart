@@ -1,6 +1,8 @@
 import 'package:Vacuate/Custom/page_title.dart';
+import 'package:Vacuate/positional_tracking/device.dart';
 import 'package:Vacuate/positional_tracking/room.dart';
 import 'package:Vacuate/positional_tracking/sensor_handler.dart';
+import 'package:Vacuate/visual/room_visual.dart';
 import 'package:flutter/material.dart';
 import 'package:Vacuate/constants.dart';
 import 'package:Vacuate/visual/room_visual.dart';
@@ -13,9 +15,20 @@ class EvacuationScreen extends StatefulWidget {
 }
 
 class _EvacuationScreenState extends State<EvacuationScreen> {
-  SensorHandler sensorHandler;
-  Device device;
-  Room room;
+
+  var device;
+  var sensorHandler;
+  var room;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    this.device = Device();
+    this.sensorHandler = SensorHandler(this.device);
+    this.room = Room();
+  }
+
   @override
   Widget build(BuildContext context) {
     // var roomPainter = Provider.of<RoomVisualPainter>(context);
@@ -34,7 +47,14 @@ class _EvacuationScreenState extends State<EvacuationScreen> {
                 child: Text("Evacuate", style: subTextStyle),
                 alignment: Alignment.topLeft,
               ),
-              SizedBox(height: 20),
+
+              Container(
+                  width: 300,
+                  height: 300,
+                  margin: EdgeInsets.fromLTRB(00, 0, 0, 0),
+                  child: CustomPaint(painter: RoomVisualPainter(sensors: this.sensorHandler.sensors, device: this.sensorHandler.approximateDevice(), room: this.room)),
+              ),
+
             ],
           ),
         ),

@@ -14,7 +14,7 @@ import '../Custom/camera_card.dart';
 import '../Custom/page_title.dart';
 import '../constants.dart';
 import '../models/sensorData.dart';
-
+import "../Services/SensorProvider.dart";
 class OfficeInformationScreen extends StatefulWidget {
   OfficeInformationScreen({Key key}) : super(key: key);
   // final FirebaseApp liveDb;
@@ -32,6 +32,7 @@ class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
   DatabaseReference _sensorRef;
   StreamSubscription<Event> _sensorSubscription;
   DatabaseError _error;
+  SensorProvider sensorProvider;
 
   @override
   void initState() {
@@ -39,7 +40,7 @@ class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
     this.device = Device();
     this.sensorHandler = SensorHandler(this.device);
     this.room = Room();
-
+    sensorProvider = SensorProvider();
     
     this._sensorRef = FirebaseDatabase.instance.reference().child("SensorData");
     _sensorRef.keepSynced(true);
@@ -47,6 +48,7 @@ class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
       setState((){
         _error = null;
         _sensor = SensorData.fromJson(e.snapshot.value) ?? "";
+        sensorProvider.postSensorData(_sensor);
       });
     }, onError: (Object o) {
       final DatabaseError error = o;
@@ -99,9 +101,9 @@ class _OfficeInformationScreenState extends State<OfficeInformationScreen> {
                 alignment: Alignment.topLeft,
                 child: Text("Camera Sensor Values", style: subTextStyle),
               ),
-              Container( child: CameraCard(cameraName: "Camera 1", monoxide: _sensor.monoxide, roomTemp: _sensor.temperature,), padding: EdgeInsets.fromLTRB(15, 0, 15, 0)),
+              Container( child: CameraCard(cameraName: "Camera 1", monoxide: _sensor.Monoxide, roomTemp: _sensor.Temperature, fire: _sensor.FIRE, lpg: _sensor.LPG), padding: EdgeInsets.fromLTRB(15, 0, 15, 0)),
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-              Container( child: CameraCard(cameraName: "Camera 1", monoxide: _sensor.monoxide, roomTemp: _sensor.temperature), padding: EdgeInsets.fromLTRB(15, 0, 15, 0)),
+              Container( child: CameraCard(cameraName: "Camera 1", monoxide: _sensor.Monoxide, roomTemp: _sensor.Temperature, fire: _sensor.FIRE, lpg: _sensor.LPG), padding: EdgeInsets.fromLTRB(15, 0, 15, 0)),
 
               // Add Route Button
               SizedBox(height: MediaQuery.of(context).size.height * 0.04),

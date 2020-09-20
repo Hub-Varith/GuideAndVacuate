@@ -7,10 +7,12 @@ class Room {
   ];
 
   var intermediateDoors = [
+
     [200.0, 150.0, 25.0, 1.0],[150.0, 50.0, 1.0, 25.0],
     
     [65.0, 150.0, 20.0, 1.0],[150.0, 200.0, 1.0, 25.0],
     
+
   ];
 
   var graph = [
@@ -18,7 +20,6 @@ class Room {
     [1, 3],
     [-1, 2, 4],
     [1,3]
-
 
   ];
 
@@ -54,7 +55,7 @@ class Room {
       }
       print("Go to doorway" + doorWays[d % doorWays.length].toString());
       return [doorWays[d % doorWays.length]];
-    }else if( exitTest( graph[graph[quadrant+1][0]] )){
+    }else if( exitTest( graph[graph[(quadrant+1)%intermediateDoors.length][0]] )){
       // Which way do we go
       int iDoor = quadrant+1 - (quadrant+1 - graph[quadrant+1][0]);
       var d = -1;
@@ -65,7 +66,7 @@ class Room {
       }
       print("Puff");
       return [intermediateDoors[iDoor % intermediateDoors.length], doorWays[d % doorWays.length]];
-    }else if(exitTest( graph[graph[quadrant][1]])){
+    }else if(exitTest( graph[graph[quadrant % intermediateDoors.length][1]])){
       // Which way do we go
       int iDoor = quadrant+1 - (quadrant+1 - graph[quadrant+1][0]);
       var d = -1;
