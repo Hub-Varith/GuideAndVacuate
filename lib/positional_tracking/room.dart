@@ -65,7 +65,7 @@ class Room {
       }
       print("Puff");
       return [intermediateDoors[iDoor % intermediateDoors.length], doorWays[d % doorWays.length]];
-    }else if(exitTest( graph[graph[quadrant][1]])){
+    }else if(exitTest( graph[graph[quadrant % intermediateDoors.length][1]])){
       // Which way do we go
       int iDoor = quadrant+1 - (quadrant+1 - graph[quadrant+1][0]);
       var d = -1;
