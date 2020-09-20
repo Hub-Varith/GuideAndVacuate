@@ -1,5 +1,6 @@
 import 'package:Vacuate/Custom/highlightedText.dart';
 import 'package:Vacuate/Custom/page_title.dart';
+import 'package:Vacuate/Services/TTSService.dart';
 import 'package:Vacuate/positional_tracking/device.dart';
 import 'package:Vacuate/positional_tracking/room.dart';
 import 'package:Vacuate/positional_tracking/sensor_handler.dart';
@@ -20,6 +21,7 @@ class _EvacuationScreenState extends State<EvacuationScreen> {
   var device;
   var sensorHandler;
   var room;
+  TTSService tts;
 
   @override
   void initState() {
@@ -28,6 +30,8 @@ class _EvacuationScreenState extends State<EvacuationScreen> {
     this.device = Device();
     this.sensorHandler = SensorHandler(this.device);
     this.room = Room();
+    tts = TTSService();
+    tts.getTTS("Please proceed to the nearest exit, highlighted on the map!");
   }
 
   @override

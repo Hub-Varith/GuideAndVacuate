@@ -43,7 +43,6 @@ class Room {
       }
     }
 
-    print(quadrant);
     if (exitTest(graph[quadrant-1])){
       // You are in location which is next to exit
       // find the negative number
@@ -53,7 +52,6 @@ class Room {
           d = graph[(quadrant)%doorWays.length][i];
         }
       }
-      print("Go to doorway" + doorWays[d % doorWays.length].toString());
       return [doorWays[d % doorWays.length]];
     }else if( exitTest( graph[graph[(quadrant+1)%intermediateDoors.length][0]] )){
       // Which way do we go
@@ -64,7 +62,6 @@ class Room {
           d = graph[quadrant+1][i];
         }
       }
-      print("Puff");
       return [intermediateDoors[iDoor % intermediateDoors.length], doorWays[d % doorWays.length]];
     }else if(exitTest( graph[graph[quadrant % intermediateDoors.length][1]])){
       // Which way do we go

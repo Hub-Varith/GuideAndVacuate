@@ -25,9 +25,9 @@ class BtServices with ChangeNotifier {
     _bleManager.observeBluetoothState().listen((btState) {
       if (btState == BluetoothState.POWERED_OFF) {
         _bleManager.enableRadio();
-        print("BT ON");
+        
       }
-      print(btState);
+      
       //do your BT logic, open different screen, etc.
     });
   }
@@ -54,7 +54,7 @@ class BtServices with ChangeNotifier {
 
       // var devicesInfo = devicesInformation.values.toList();
       visibleDevicesController.add(devicesInfo);
-      print("adData: ${result.advertisementData}\n rssi: ${result.rssi}");
+      // print("adData: ${result.advertisementData}\n rssi: ${result.rssi}");
       notifyListeners();
     });
   }
