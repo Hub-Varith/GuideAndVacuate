@@ -16,8 +16,8 @@ import '../constants.dart';
 import '../models/sensorData.dart';
 
 class OfficeInformationScreen extends StatefulWidget {
-  OfficeInformationScreen({Key key, this.liveDb}) : super(key: key);
-  final FirebaseApp liveDb;
+  OfficeInformationScreen({Key key}) : super(key: key);
+  // final FirebaseApp liveDb;
   _OfficeInformationScreenState createState() =>
       _OfficeInformationScreenState();
 }
