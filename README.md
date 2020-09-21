@@ -1,4 +1,4 @@
-# Guide And Veacuate
+# Guide And Vacuate
 *Our mission is to save lives by providing people smart emergency guidance and evacuation safety*
 
 ## Mobile App
