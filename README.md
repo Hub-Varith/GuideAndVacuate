@@ -1,5 +1,11 @@
 # Guide And Vacuate
-*Our mission is to save lives by providing people smart emergency guidance and evacuation safety*
+*IoT emergency guidance system designed to save lives by providing people smart emergency guidance and evacuation safety. Developed at HackMIT 2020.*
+
+## Team
+Aabhas Senapati <br/>
+William Yang <br/>
+Haemavitch (Hub) Varith <br/>
+Rohan Mehta
 
 ## Mobile App
 [Link to Mobile App Github Repository](https://github.com/iBessonob/GuideAndVacuate)
