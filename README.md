@@ -1,5 +1,5 @@
 # Guide And Vacuate
-*IoT emergency guidance system designed to save lives by providing people smart emergency guidance and evacuation safety. <br/>Developed at HackMIT 2020.*
+*IoT emergency guidance system designed to save lives by providing people smart emergency guidance and evacuation safety. <br/>Developed at HackMIT 2020. <br/> IBM Covid-19 Challenge 2nd Place*
 
 ## Team
 Aabhas Senapati <br/>
